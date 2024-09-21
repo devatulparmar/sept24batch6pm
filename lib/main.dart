@@ -7,8 +7,9 @@ void main() {
         primarySwatch: Colors.red,
       ),
       home: Scaffold(
+        // backgroundColor: Colors.blue.shade900,
         appBar: AppBar(
-          backgroundColor: Colors.green,
+          // backgroundColor: Colors.green,
           centerTitle: true,
           elevation: 20,
           leadingWidth: 100,
@@ -43,6 +44,26 @@ void main() {
             ),
           ],
         ),
+        body: Center(
+          child: Text(
+            'This is Body part',
+          ),
+        ),
+        floatingActionButton: FloatingActionButton.extended(
+            onPressed: (){
+
+            },
+            label: Text('This is FLoating Action Button'),
+        ),
+        // floatingActionButton: FloatingActionButton(
+        //   onPressed: (){
+        //     print('clicked');
+        //   },
+        //   child: Icon(
+        //     Icons.add,
+        //   ),
+        // ),
+        // floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       ),
     ),
   );
