@@ -44,61 +44,59 @@ void main() {
             ),
           ],
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Text(
-              'Button clicked',
-            ),
-            Text(
-              '$count times',
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('Hello'),
-                const Text('World'),
-              ],
-            ),
-            Container(
-              width: 100,
-              height: 100,
-              alignment: Alignment.center,
-              padding: const EdgeInsets.only(left: 15),
-              margin: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Colors.orange,
-                border: Border.all(
-                  color: Colors.black,
-                  width: 2,
-                ),
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(15),
-                  bottomLeft: Radius.circular(15),
+        body: Container(
+          color: Colors.grey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Container(
+                color: Colors.red,
+                height: 100,
+                width: 100,
+              ),
+              Container(
+                height: 100,
+                color: Colors.black,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Container(
+                      color: Colors.orange,
+                      height: 100,
+                      width: 100,
+                    ),
+                    Container(
+                      color: Colors.greenAccent,
+                      height: 150,
+                      width: 100,
+                    ),
+                    Container(
+                      color: Colors.pink,
+                      height: 100,
+                      width: 100,
+                    ),
+                    Container(
+                      color: Colors.cyanAccent,
+                      height: 150,
+                      width: 100,
+                    ),
+                  ],
                 ),
               ),
-              child: const Text('Hello World'),
-            ),
-            Container(
-              width: 100,
-              height: 100,
-              alignment: Alignment.center,
-              padding: const EdgeInsets.only(left: 15),
-              margin: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
+              Container(
                 color: Colors.blueAccent,
-                border: Border.all(
-                  color: Colors.black,
-                  width: 2,
-                ),
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(15),
-                  bottomLeft: Radius.circular(15),
-                ),
+                height: 100,
+                width: 100,
               ),
-              child: const Text('Hello World'),
-            ),
-          ],
+              Container(
+                color: Colors.yellow,
+                height: 100,
+                width: 100,
+              ),
+            ],
+          ),
         ),
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
