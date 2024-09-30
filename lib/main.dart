@@ -26,74 +26,124 @@ void main() {
             ),
           ),
           actions: [
+            Container(
+              width: 10,
+            ),
             const Icon(
               Icons.add,
               color: Colors.white,
-              size: 20,
-            ),
-            const Icon(
-              Icons.access_alarms_rounded,
-              color: Colors.white,
-              size: 20,
-            ),
-            const Text(
-              "This is AppBar",
-              style: TextStyle(
-                color: Colors.white,
-              ),
+              size: 35,
             ),
           ],
         ),
         body: Container(
           color: Colors.grey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.end,
+          child: Wrap(
+            direction: Axis.vertical,
+            crossAxisAlignment: WrapCrossAlignment.end,
+            spacing: 10,
+            runSpacing: 30,
+            verticalDirection: VerticalDirection.down,
             children: [
               Container(
                 color: Colors.red,
                 height: 100,
                 width: 100,
+                child: const Center(
+                  child: Text('1'),
+                ),
               ),
               Container(
+                color: Colors.orange,
                 height: 100,
-                color: Colors.black,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Container(
-                      color: Colors.orange,
-                      height: 100,
-                      width: 100,
-                    ),
-                    Container(
-                      color: Colors.greenAccent,
-                      height: 150,
-                      width: 100,
-                    ),
-                    Container(
-                      color: Colors.pink,
-                      height: 100,
-                      width: 100,
-                    ),
-                    Container(
-                      color: Colors.cyanAccent,
-                      height: 150,
-                      width: 100,
-                    ),
-                  ],
+                width: 100,
+                child: const Center(
+                  child: Text('2'),
+                ),
+              ),
+              Container(
+                color: Colors.greenAccent,
+                height: 100,
+                width: 100,
+                child: const Center(
+                  child: Text('3'),
+                ),
+              ),
+              Container(
+                color: Colors.pink,
+                height: 100,
+                width: 100,
+                child: const Center(
+                  child: Text('4'),
                 ),
               ),
               Container(
                 color: Colors.blueAccent,
                 height: 100,
                 width: 100,
+                child: const Center(
+                  child: Text('5'),
+                ),
               ),
               Container(
-                color: Colors.yellow,
+                color: Colors.purple,
                 height: 100,
                 width: 100,
+                child: const Center(
+                  child: Text('6'),
+                ),
+              ),
+              Container(
+                height: 100,
+                width: 100,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [
+                        Colors.red,
+                        Colors.blue,
+                        Colors.black,
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      tileMode: TileMode.repeated),
+                ),
+                child: const Center(
+                  child: Text('7'),
+                ),
+              ),
+              Container(
+                height: 100,
+                width: 100,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [
+                        Colors.blue,
+                        Colors.black,
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      tileMode: TileMode.repeated,),
+                ),
+                child: const Center(
+                  child: Text('8'),
+                ),
+              ),
+              Container(
+                height: 100,
+                width: 100,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [
+                        Colors.blue,
+                        Colors.greenAccent,
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      tileMode: TileMode.repeated,),
+                ),
+                child: const Center(
+                  child: Text('9'),
+                ),
               ),
             ],
           ),
