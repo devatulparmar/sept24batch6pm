@@ -1,3 +1,4 @@
+import 'package:batch6pm/SecondScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,9 +14,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.red,
+          centerTitle: true,
+          elevation: 0,
+        ),
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          backgroundColor: Colors.green,
+        ),
       ),
-      home: const MyHomePage(),
+      home: const SecondScreen(),
     );
   }
 }
