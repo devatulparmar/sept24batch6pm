@@ -29,42 +29,19 @@ class MyApp extends StatelessWidget {
                 textBaseline: TextBaseline.alphabetic),
           ),
         ),
-        body: Column(
+        body: const Row(
           children: [
-            const Row(
-              children: [
-                Expanded(
-                  flex: 0,
-                  child: Text("Hello"),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Text("Hello"),
-                ),
-                Expanded(
-                  flex: 0,
-                  child: Text("Hello"),
-                ),
-              ],
+            Expanded(
+              flex: 1,
+              child: Text('Hello'),
             ),
             Expanded(
-              flex: 2,
-              child: Container(
-                color: Colors.red,
-                width: 100,
-              ),
-            ),
-            Container(
-              color: Colors.blue,
-              height: 500,
-              width: 100,
+              flex: 1,
+              child: Text('Hi'),
             ),
             Expanded(
-              flex: 2,
-              child: Container(
-                color: Colors.yellow,
-                width: 100,
-              ),
+              flex: 0,
+              child: Text('bye'),
             ),
           ],
         ),
