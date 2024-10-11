@@ -1,4 +1,5 @@
 import 'package:batch6pm/home_screen.dart';
+import 'package:batch6pm/image_screen.dart';
 import 'package:batch6pm/second_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -13,8 +14,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: SecondScreen(),
+    return MaterialApp(
+      theme: ThemeData(
+        appBarTheme:const AppBarTheme(
+            backgroundColor: Colors.blue
+        ),
+      ),
+      home: const MyImageScreen(),
     );
   }
 }
