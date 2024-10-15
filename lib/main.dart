@@ -1,5 +1,6 @@
 import 'package:batch6pm/home_screen.dart';
 import 'package:batch6pm/image_screen.dart';
+import 'package:batch6pm/list_screen.dart';
 import 'package:batch6pm/second_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -16,11 +17,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        appBarTheme:const AppBarTheme(
-            backgroundColor: Colors.blue
+        appBarTheme: const AppBarTheme(backgroundColor: Colors.blue),
+        scrollbarTheme: ScrollbarThemeData(
+          thumbColor: WidgetStateProperty.all(Colors.blue),
         ),
       ),
-      home: const MyImageScreen(),
+      home: const ListScreen(),
     );
   }
 }

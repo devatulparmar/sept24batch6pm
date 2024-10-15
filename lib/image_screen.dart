@@ -18,7 +18,7 @@ class _MyImageScreenState extends State<MyImageScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Image(
-            height: 150,
+            height: 300,
             width: 150,
             image: AssetImage("images/image1.jpg"),
           ),
@@ -28,7 +28,7 @@ class _MyImageScreenState extends State<MyImageScreen> {
             image: const NetworkImage(
               "https://4.img-dpreview.com/files/p/E~TS590x0~articles/3925134721/0266554465.jpeg",
             ),
-            errorBuilder: (BuildContext context, Object obj, StackTrace? s) {
+            errorBuilder: (_, __, ___) {
               return const Icon(
                 Icons.image_not_supported,
                 size: 50,
@@ -67,7 +67,7 @@ class _MyImageScreenState extends State<MyImageScreen> {
             children: [
               const CircleAvatar(
                 radius: 50,
-                backgroundImage: AssetImage("images/image2.jpeg"),
+                backgroundImage: AssetImage("images/image2.jpeg",),
               ),
               ClipRRect(
                 borderRadius: BorderRadius.circular(300),
