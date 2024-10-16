@@ -1,6 +1,9 @@
 import 'package:batch6pm/home_screen.dart';
 import 'package:batch6pm/image_screen.dart';
+import 'package:batch6pm/list_generate.dart';
+import 'package:batch6pm/list_builder_screen.dart';
 import 'package:batch6pm/list_screen.dart';
+import 'package:batch6pm/list_separated_screen.dart';
 import 'package:batch6pm/second_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +25,9 @@ class MyApp extends StatelessWidget {
           thumbColor: WidgetStateProperty.all(Colors.blue),
         ),
       ),
-      home: const ListScreen(),
+      home: const ListBuilderScreen(),
+      // home: const ListSeparatedScreen(),
+      // home: const ListGenerate(),
     );
   }
 }
