@@ -1,3 +1,7 @@
+import 'package:batch6pm/grid_builder_screen.dart';
+import 'package:batch6pm/grid_count_screen.dart';
+import 'package:batch6pm/grid_extent_screen.dart';
+import 'package:batch6pm/grid_list_screen.dart';
 import 'package:batch6pm/home_screen.dart';
 import 'package:batch6pm/image_screen.dart';
 import 'package:batch6pm/list_generate.dart';
@@ -25,7 +29,7 @@ class MyApp extends StatelessWidget {
           thumbColor: WidgetStateProperty.all(Colors.blue),
         ),
       ),
-      home: const ListBuilderScreen(),
+      home: const GridExtentScreen(),
       // home: const ListSeparatedScreen(),
       // home: const ListGenerate(),
     );
