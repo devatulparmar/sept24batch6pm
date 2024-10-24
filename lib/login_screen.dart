@@ -1,3 +1,4 @@
+import 'package:batch6pm/utils/const.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -13,6 +14,8 @@ class _LoginScreenState extends State<LoginScreen> {
   bool isObscureText = true;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  FocusNode emailFocusNode = FocusNode();
+  FocusNode passwordFocusNode = FocusNode();
 
   @override
   void dispose() {
@@ -31,10 +34,85 @@ class _LoginScreenState extends State<LoginScreen> {
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
-            const Text('Email'),
+            const SizedBox(height: 40),
             TextField(
               controller: emailController,
               textInputAction: TextInputAction.next,
+              keyboardType: TextInputType.emailAddress,
+              focusNode: emailFocusNode,
+              decoration: const InputDecoration(
+                hintText: 'Email',
+                enabledBorder: enabledBorder,
+                focusedBorder: focusedBorder,
+              ),
+              onTapOutside: (PointerDownEvent event){
+                emailFocusNode.unfocus();
+              },
+            ),
+            const SizedBox(height: 20),
+            TextField(
+              controller: passwordController,
+              textInputAction: TextInputAction.done,
+              keyboardType: TextInputType.visiblePassword,
+              obscureText: isObscureText,
+              focusNode: passwordFocusNode,
+              decoration: InputDecoration(
+                hintText: 'Password',
+                enabledBorder: enabledBorder,
+                focusedBorder: focusedBorder,
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    if (isObscureText == true) {
+                      isObscureText = false;
+                    } else {
+                      isObscureText = true;
+                    }
+                    setState(() {});
+                  },
+                  icon: Icon(
+                    isObscureText
+                        ? Icons.remove_red_eye_outlined
+                        : Icons.remove_red_eye,
+                    color: isObscureText ? Colors.grey : Colors.green,
+                  ),
+                ),
+              ),
+              onTapOutside: (PointerDownEvent event){
+                passwordFocusNode.unfocus();
+              },
+            ),
+            const SizedBox(height: 20),
+            Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      print('Elevated button click');
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                    ),
+                    child: const Text(
+                      'Login',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            TextButton(
+              onPressed: () {
+                print('forget password click');
+              },
+              child: const Text('Forget Password'),
+            ),
+
+            /*
+           TextField(
               decoration: InputDecoration(
                 border: const OutlineInputBorder(),
                 focusColor: Colors.red,
@@ -45,15 +123,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: 2,
                   ),
                 ),
-                suffixIcon: IconButton(
-                  onPressed: () {
-                    emailController.clear();
-                  },
-                  icon: const Icon(
-                    Icons.clear,
-                    color: Colors.red,
-                  ),
-                ),
+                // suffixIcon: IconButton(
+                //   onPressed: () {
+                //     emailController.clear();
+                //   },
+                //   icon: const Icon(
+                //     Icons.clear,
+                //     color: Colors.red,
+                //   ),
+                // ),
               ),
             ),
             const SizedBox(
@@ -157,7 +235,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 fillColor: Colors.orange.shade50,
               ),
             ),
-            Text(passwordController.text),
+            Text(passwordController.text),*/
           ],
         ),
       ),
