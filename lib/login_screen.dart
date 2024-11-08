@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -14,12 +15,14 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool isObscureText = true;
+  TextEditingController phoneController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   FocusNode emailFocusNode = FocusNode();
   FocusNode passwordFocusNode = FocusNode();
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> formKey2 = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -42,6 +45,26 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             children: [
               const SizedBox(height: 40),
+              IntlPhoneField(
+                controller: phoneController,
+                decoration: const InputDecoration(
+                  labelText: 'Phone Number',
+                  border: enabledBorder,
+                ),
+                initialCountryCode: 'IN',
+                onChanged: (phone) {
+                  print(phone.completeNumber);
+                  print(phone.countryCode);
+                  print(phone.number);
+                },
+                validator: (value) {
+                  if (value.toString().isEmpty || value == null) {
+                    return 'Please enter a number';
+                  } else {
+                    return null;
+                  }
+                },
+              ),
               const SizedBox(height: 20),
               TextFormField(
                 controller: emailController,
@@ -103,25 +126,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: ElevatedButton(
                       onPressed: () {
                         print('Elevated button click');
-                        if (formKey.currentState!.validate()) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: const Text('Login Success'),
-                              backgroundColor: Colors.green,
-                              duration: const Duration(seconds: 10),
-                              // showCloseIcon: true,
-                              // closeIconColor: Colors.red,
-                              action: SnackBarAction(
-                                onPressed: (){
-                                  print('Hello');
-                                },
-                                label: "Click Here",
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(35),
-                              ),
-                              behavior: SnackBarBehavior.floating,
-                            ),
+                        if (phoneController.text.isEmpty) {
+                          MySnackBar.showSnackBar(
+                            context: context,
+                            content: 'Error',
+                            backGroundColor: Colors.red,
+                          );
+                        } else if (formKey.currentState!.validate() ||
+                            formKey2.currentState!.validate()) {
+                          MySnackBar.showSnackBar(
+                            context: context,
+                            content: 'Login Success',
+                            backGroundColor: Colors.green,
                           );
                         }
                       },
