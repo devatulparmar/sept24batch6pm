@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
           thumbColor: WidgetStateProperty.all(Colors.blue),
         ),
       ),
-      home: const LoginScreen(),
+      home: const MyImageScreen(),
       // home: const ListSeparatedScreen(),
       // home: const ListGenerate(),
     );
