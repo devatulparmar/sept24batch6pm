@@ -10,6 +10,7 @@ import 'package:batch6pm/login_screen.dart';
 import 'package:batch6pm/nested_list_screen.dart';
 import 'package:batch6pm/list_screen.dart';
 import 'package:batch6pm/list_separated_screen.dart';
+import 'package:batch6pm/sales_screen.dart';
 import 'package:batch6pm/second_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -31,8 +32,8 @@ class MyApp extends StatelessWidget {
           thumbColor: WidgetStateProperty.all(Colors.blue),
         ),
       ),
-      home: const MyImageScreen(),
-      // home: const ListSeparatedScreen(),
+      // home: const MyImageScreen(),
+      home: const SalesScreen(),
       // home: const ListGenerate(),
     );
   }
