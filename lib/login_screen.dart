@@ -1,3 +1,5 @@
+import 'package:batch6pm/home_screen.dart';
+import 'package:batch6pm/screen2.dart';
 import 'package:batch6pm/utils/const.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -125,21 +127,28 @@ class _LoginScreenState extends State<LoginScreen> {
                     flex: 1,
                     child: ElevatedButton(
                       onPressed: () {
-                        print('Elevated button click');
-                        if (phoneController.text.isEmpty) {
-                          MySnackBar.showSnackBar(
-                            context: context,
-                            content: 'Error',
-                            backGroundColor: Colors.red,
-                          );
-                        } else if (formKey.currentState!.validate() ||
-                            formKey2.currentState!.validate()) {
-                          MySnackBar.showSnackBar(
-                            context: context,
-                            content: 'Login Success',
-                            backGroundColor: Colors.green,
-                          );
-                        }
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) => Screen2(),
+                          ),
+                        );
+
+                        // print('Elevated button click');
+                        // if (phoneController.text.isEmpty) {
+                        //   MySnackBar.showSnackBar(
+                        //     context: context,
+                        //     content: 'Error',
+                        //     backGroundColor: Colors.red,
+                        //   );
+                        // } else if (formKey.currentState!.validate() ||
+                        //     formKey2.currentState!.validate()) {
+                        //   MySnackBar.showSnackBar(
+                        //     context: context,
+                        //     content: 'Login Success',
+                        //     backGroundColor: Colors.green,
+                        //   );
+                        // }
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.red,
