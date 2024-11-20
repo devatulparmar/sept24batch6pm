@@ -127,12 +127,26 @@ class _LoginScreenState extends State<LoginScreen> {
                     flex: 1,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushReplacement(
+                        // Navigator.pushNamed(context, 'screen2');
+
+                        Navigator.pushNamed(
                           context,
-                          MaterialPageRoute(
-                            builder: (BuildContext context) => Screen2(),
-                          ),
+                          routeScreen2,
+                          arguments: {
+                            "email": emailController.text,
+                            "password": passwordController.text,
+                          },
                         );
+
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (BuildContext context) => Screen2(
+                        //       email: emailController.text,
+                        //       password: passwordController.text,
+                        //     ),
+                        //   ),
+                        // );
 
                         // print('Elevated button click');
                         // if (phoneController.text.isEmpty) {

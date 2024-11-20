@@ -17,6 +17,12 @@ class _Screen4State extends State<Screen4> {
         title: Text('Screen 4'),
         leading: IconButton(
           onPressed: () {
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              '/',
+              (Route route) => false,
+            );
+
             // Navigator.pushReplacement(
             //   context,
             //   MaterialPageRoute(
@@ -24,20 +30,20 @@ class _Screen4State extends State<Screen4> {
             //   ),
             // );
 
-            Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(
-                builder: (BuildContext context) => LoginScreen(),
-              ),
-              (Route route) => false,
-            );
-
-            Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(
-                builder: (BuildContext context) => LoginScreen(),
-              ),
-              (Route route) => false,
-            );
+            // Navigator.of(context).pushAndRemoveUntil(
+            //   MaterialPageRoute(
+            //     builder: (BuildContext context) => LoginScreen(),
+            //   ),
+            //   (Route route) => false,
+            // );
+            //
+            // Navigator.pushAndRemoveUntil(
+            //   context,
+            //   MaterialPageRoute(
+            //     builder: (BuildContext context) => LoginScreen(),
+            //   ),
+            //   (Route route) => false,
+            // );
           },
           icon: Icon(
             Icons.arrow_back,
