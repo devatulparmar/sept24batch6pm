@@ -8,17 +8,17 @@ class MyImageScreen extends StatefulWidget {
 }
 
 class _MyImageScreenState extends State<MyImageScreen> {
-  GlobalKey<ScaffoldState> key = GlobalKey();
+  GlobalKey<ScaffoldState> obj = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: key,
+      key: obj,
       appBar: AppBar(
         title: const Text('Image Screen'),
         leading: IconButton(
           onPressed: () {
-            key.currentState!.openDrawer();
+            obj.currentState!.openDrawer();
           },
           icon: const Icon(
             Icons.open_in_new,
@@ -28,7 +28,7 @@ class _MyImageScreenState extends State<MyImageScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              key.currentState!.openEndDrawer();
+              obj.currentState!.openEndDrawer();
             },
             icon: const Icon(
               Icons.open_in_new,
@@ -90,10 +90,10 @@ class _MyImageScreenState extends State<MyImageScreen> {
               iconColor: Colors.yellow,
               minTileHeight: 25,
               titleAlignment: ListTileTitleAlignment.center,
-              contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+              contentPadding: const EdgeInsets.symmetric(horizontal: 5),
               minLeadingWidth: 10,
-              selected: false,
-              isThreeLine: true,
+              selected: true,
+              isThreeLine: false,
               onTap: () {
                 print('home click');
               },

@@ -75,3 +75,5 @@ class MySnackBar {
 
 const String routeScreen2 = 'screen2';
 const String routeScreen3 = 'screen3';
+const String routeLoginScreen = 'LoginScreen';
+const String routeRegisterScreen = 'routeRegisterScreen';
