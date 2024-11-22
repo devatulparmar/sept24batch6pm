@@ -23,6 +23,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   String selectedGenderText = 'Male';
 
+  bool isCheckBoxChecked = false;
+
+  String? dropDownSelectedCity;
+
+  String selectedDate = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -164,6 +170,73 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       selectedGenderText = newValue!;
                       setState(() {});
                     },
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            DropdownButton(
+              value: dropDownSelectedCity,
+              items: [
+                DropdownMenuItem(
+                  value: "Vadodara",
+                  child: Text('Vadodara'),
+                ),
+                DropdownMenuItem(
+                  value: "Surat",
+                  child: Text('Surat'),
+                ),
+                DropdownMenuItem(
+                  value: "Ahmedabad",
+                  child: Text('Ahmedabad'),
+                ),
+              ],
+              hint: Text('Select City'),
+              onChanged: (newValue) {
+                dropDownSelectedCity = newValue!;
+                setState(() {});
+              },
+            ),
+            const SizedBox(height: 20),
+            Row(
+              children: [
+                Checkbox(
+                  value: isCheckBoxChecked,
+                  onChanged: (newValue) {
+                    isCheckBoxChecked = newValue!;
+                    setState(() {});
+                  },
+                ),
+                Text('Accept All Terms and Conditions.'),
+              ],
+            ),
+            const SizedBox(height: 20),
+            CheckboxListTile(
+              value: isCheckBoxChecked,
+              title: const Text('Accept All Terms and Conditions.'),
+              contentPadding: EdgeInsets.zero,
+              controlAffinity: ListTileControlAffinity.leading,
+              activeColor: Colors.red,
+              onChanged: (newValue) {
+                isCheckBoxChecked = newValue!;
+                setState(() {});
+              },
+            ),
+            Row(
+              children: [
+                Text('BirthDate : $selectedDate'),
+                IconButton(
+                  onPressed: () async {
+                   DateTime? date = await showDatePicker(
+                      context: context,
+                      firstDate: DateTime(1970),
+                      lastDate: DateTime(DateTime.now().year - 19, 12, 31),
+                    );
+                   selectedDate = date!.toString();
+                   setState(() {});
+                  },
+                  icon: Icon(
+                    Icons.calendar_month,
                   ),
                 ),
               ],
