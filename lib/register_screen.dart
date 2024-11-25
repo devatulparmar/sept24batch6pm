@@ -1,5 +1,6 @@
 import 'package:batch6pm/utils/const.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -28,6 +29,45 @@ class _RegisterScreenState extends State<RegisterScreen> {
   String? dropDownSelectedCity;
 
   String selectedDate = '';
+
+  String selectedTime = '';
+
+  void _selectDateFromDatePicker() async {
+    DateTime? date = await showDatePicker(
+      context: context,
+      firstDate: DateTime(1970),
+      lastDate: DateTime(
+          DateTime.now().year - 18, DateTime.now().month, DateTime.now().day),
+      initialEntryMode: DatePickerEntryMode.inputOnly
+    );
+    var formattedDate = DateFormat.EEEE().format(date!);
+    var d = DateFormat('dd:MM/yyyy').format(date);
+    selectedDate = formattedDate.toString();
+    setState(() {});
+  }
+
+  void _selectTimeFromTimePicker() async {
+    var time = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+      barrierDismissible: true,
+      initialEntryMode: TimePickerEntryMode.dialOnly
+      // hourLabelText: "hourLabelText",
+      // builder: (context, child) => MediaQuery(
+      //     data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: true),
+      //     child: child!,
+      // ),
+    );
+
+    /// for 12HourFormat
+    var formattedTime = time!.format(context).toString();
+    print(formattedTime);
+
+    /// for 24HourFormat
+    selectedTime = "${time.hour}:${time.minute}";
+
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +142,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     setState(() {});
                   },
                 ),
-                Text('Male'),
+                const Text('Male'),
                 Radio(
                   value: 1,
                   groupValue: selectedGender,
@@ -112,7 +152,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     setState(() {});
                   },
                 ),
-                Text('Female'),
+                const Text('Female'),
               ],
             ),
             const SizedBox(height: 20),
@@ -127,7 +167,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     setState(() {});
                   },
                 ),
-                Text('Male'),
+                const Text('Male'),
                 Radio(
                   value: "Female",
                   groupValue: selectedGenderText,
@@ -138,7 +178,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     setState(() {});
                   },
                 ),
-                Text('Female'),
+                const Text('Female'),
               ],
             ),
             const SizedBox(height: 20),
@@ -150,7 +190,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     value: "Male",
                     groupValue: selectedGenderText,
                     activeColor: Colors.red,
-                    title: Text('Male'),
+                    title: const Text('Male'),
                     contentPadding: EdgeInsets.zero,
                     onChanged: (newValue) {
                       selectedGenderText = newValue!;
@@ -165,7 +205,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     groupValue: selectedGenderText,
                     activeColor: Colors.red,
                     contentPadding: EdgeInsets.zero,
-                    title: Text('Female'),
+                    title: const Text('Female'),
                     onChanged: (newValue) {
                       selectedGenderText = newValue!;
                       setState(() {});
@@ -178,20 +218,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
             DropdownButton(
               value: dropDownSelectedCity,
               items: [
-                DropdownMenuItem(
+                const DropdownMenuItem(
                   value: "Vadodara",
                   child: Text('Vadodara'),
                 ),
-                DropdownMenuItem(
+                const DropdownMenuItem(
                   value: "Surat",
                   child: Text('Surat'),
                 ),
-                DropdownMenuItem(
+                const DropdownMenuItem(
                   value: "Ahmedabad",
                   child: Text('Ahmedabad'),
                 ),
               ],
-              hint: Text('Select City'),
+              hint: const Text('Select City'),
               onChanged: (newValue) {
                 dropDownSelectedCity = newValue!;
                 setState(() {});
@@ -207,7 +247,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     setState(() {});
                   },
                 ),
-                Text('Accept All Terms and Conditions.'),
+                const Text('Accept All Terms and Conditions.'),
               ],
             ),
             const SizedBox(height: 20),
@@ -226,17 +266,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
               children: [
                 Text('BirthDate : $selectedDate'),
                 IconButton(
-                  onPressed: () async {
-                   DateTime? date = await showDatePicker(
-                      context: context,
-                      firstDate: DateTime(1970),
-                      lastDate: DateTime(DateTime.now().year - 19, 12, 31),
-                    );
-                   selectedDate = date!.toString();
-                   setState(() {});
+                  onPressed: () {
+                    _selectDateFromDatePicker();
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.calendar_month,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            Row(
+              children: [
+                Text('Time : $selectedTime'),
+                IconButton(
+                  onPressed: () {
+                    _selectTimeFromTimePicker();
+                  },
+                  icon: const Icon(
+                    Icons.timer,
                   ),
                 ),
               ],
