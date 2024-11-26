@@ -1,4 +1,5 @@
 import 'package:batch6pm/default_screen.dart';
+import 'package:batch6pm/image_picker_screen.dart';
 import 'package:batch6pm/image_screen.dart';
 import 'package:batch6pm/login_screen.dart';
 import 'package:batch6pm/register_screen.dart';
@@ -22,15 +23,17 @@ class MyAppRoutes {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(
-            builder: (BuildContext context) => DefaultScreen());
+            builder: (BuildContext context) => const DefaultScreen());
       case routeScreen2:
         return MaterialPageRoute(builder: (BuildContext context) => Screen2(arguments: settings.arguments,));
       case routeScreen3:
-        return MaterialPageRoute(builder: (BuildContext context) => Screen3());
+        return MaterialPageRoute(builder: (BuildContext context) => const Screen3());
       case routeLoginScreen:
-        return MaterialPageRoute(builder: (BuildContext context) => LoginScreen());
+        return MaterialPageRoute(builder: (BuildContext context) => const LoginScreen());
       case routeRegisterScreen:
-        return MaterialPageRoute(builder: (BuildContext context) => RegisterScreen());
+        return MaterialPageRoute(builder: (BuildContext context) => const RegisterScreen());
+      case routeImagePickerScreen:
+        return MaterialPageRoute(builder: (BuildContext context) => const ImagePickerScreen());
       default:
         return MaterialPageRoute(
           builder: (BuildContext context) => Scaffold(
@@ -39,7 +42,7 @@ class MyAppRoutes {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text('No route defined for ${settings.name}'),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.pop(context);

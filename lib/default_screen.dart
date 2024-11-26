@@ -14,15 +14,29 @@ class _DefaultScreenState extends State<DefaultScreen> {
     return Scaffold(
       appBar: AppBar(),
       body: ListView(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         children: [
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           ListTile(
             tileColor: Colors.blueAccent,
-            title: Text('Register'),
+            title: const Text('Image Picker'),
             textColor: Colors.white,
-            contentPadding: EdgeInsets.symmetric(horizontal: 5),
-            trailing: Icon(
+            contentPadding: const EdgeInsets.symmetric(horizontal: 5),
+            trailing: const Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.white,
+            ),
+            onTap: () {
+              Navigator.pushNamed(context, routeImagePickerScreen);
+            },
+          ),
+          const SizedBox(height: 20),
+          ListTile(
+            tileColor: Colors.blueAccent,
+            title: const Text('Register'),
+            textColor: Colors.white,
+            contentPadding: const EdgeInsets.symmetric(horizontal: 5),
+            trailing: const Icon(
               Icons.arrow_forward_ios,
               color: Colors.white,
             ),
@@ -30,13 +44,13 @@ class _DefaultScreenState extends State<DefaultScreen> {
               Navigator.pushNamed(context, routeRegisterScreen);
             },
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           ListTile(
             tileColor: Colors.blueAccent,
-            title: Text('Login'),
+            title: const Text('Login'),
             textColor: Colors.white,
-            contentPadding: EdgeInsets.symmetric(horizontal: 5),
-            trailing: Icon(
+            contentPadding: const EdgeInsets.symmetric(horizontal: 5),
+            trailing: const Icon(
               Icons.arrow_forward_ios,
               color: Colors.white,
             ),
@@ -44,7 +58,7 @@ class _DefaultScreenState extends State<DefaultScreen> {
               Navigator.pushNamed(context, routeLoginScreen);
             },
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
         ],
       ),
     );
