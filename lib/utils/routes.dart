@@ -1,4 +1,5 @@
 import 'package:batch6pm/default_screen.dart';
+import 'package:batch6pm/dialog_screen.dart';
 import 'package:batch6pm/image_picker_screen.dart';
 import 'package:batch6pm/image_screen.dart';
 import 'package:batch6pm/login_screen.dart';
@@ -34,6 +35,8 @@ class MyAppRoutes {
         return MaterialPageRoute(builder: (BuildContext context) => const RegisterScreen());
       case routeImagePickerScreen:
         return MaterialPageRoute(builder: (BuildContext context) => const ImagePickerScreen());
+      case routeDialogScreen:
+        return MaterialPageRoute(builder: (BuildContext context) => const DialogScreen());
       default:
         return MaterialPageRoute(
           builder: (BuildContext context) => Scaffold(

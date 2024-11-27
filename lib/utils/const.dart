@@ -78,3 +78,4 @@ const String routeScreen3 = 'screen3';
 const String routeLoginScreen = 'LoginScreen';
 const String routeRegisterScreen = 'routeRegisterScreen';
 const String routeImagePickerScreen = 'routeImagePickerScreen';
+const String routeDialogScreen = 'routeDialogScreen';
