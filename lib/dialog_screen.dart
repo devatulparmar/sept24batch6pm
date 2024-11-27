@@ -148,7 +148,6 @@ class _DialogScreenState extends State<DialogScreen> {
       barrierLabel: 'Label',
       builder: (context) {
         return Column(
-          mainAxisSize: MainAxisSize.max,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -159,21 +158,15 @@ class _DialogScreenState extends State<DialogScreen> {
                 ),
               ],
             ),
-            ElevatedButton(
-              onPressed: () => _openDialog(),
-              child: const Text('Dialog'),
-            ),
-            ElevatedButton(
-              onPressed: () => _openAlertDialog(),
-              child: const Text('Alert Dialog'),
-            ),
-            ElevatedButton(
-              onPressed: () => _openAboutDialog(),
-              child: const Text('About Dialog'),
-            ),
-            ElevatedButton(
-              onPressed: () => _openCupertinoDialogAction(),
-              child: const Text('Cupertino Dialog Action'),
+            SizedBox(
+              height: 300,
+              child: CupertinoDatePicker(
+                onDateTimeChanged: (time) {
+                  print(time);
+                },
+                initialDateTime: DateTime.now(),
+                mode: CupertinoDatePickerMode.date,
+              ),
             ),
           ],
         );
