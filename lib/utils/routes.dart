@@ -1,3 +1,4 @@
+import 'package:batch6pm/bottom_nav_screen.dart';
 import 'package:batch6pm/default_screen.dart';
 import 'package:batch6pm/dialog_screen.dart';
 import 'package:batch6pm/image_picker_screen.dart';
@@ -24,7 +25,8 @@ class MyAppRoutes {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(
-            builder: (BuildContext context) => const DefaultScreen());
+            builder: (BuildContext context) => const AppBottomNavScreen(),
+        );
       case routeScreen2:
         return MaterialPageRoute(builder: (BuildContext context) => Screen2(arguments: settings.arguments,));
       case routeScreen3:

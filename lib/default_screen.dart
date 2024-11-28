@@ -1,3 +1,4 @@
+import 'package:batch6pm/utils/colors.dart';
 import 'package:batch6pm/utils/const.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,9 @@ class _DefaultScreenState extends State<DefaultScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: appColorAppBar,
+      ),
       body: ListView(
         padding: const EdgeInsets.all(10),
         children: [
