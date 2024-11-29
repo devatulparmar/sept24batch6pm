@@ -7,6 +7,7 @@ import 'package:batch6pm/login_screen.dart';
 import 'package:batch6pm/register_screen.dart';
 import 'package:batch6pm/screen2.dart';
 import 'package:batch6pm/screen3.dart';
+import 'package:batch6pm/tab_screen.dart';
 import 'package:batch6pm/utils/const.dart';
 import 'package:flutter/material.dart';
 
@@ -39,6 +40,8 @@ class MyAppRoutes {
         return MaterialPageRoute(builder: (BuildContext context) => const ImagePickerScreen());
       case routeDialogScreen:
         return MaterialPageRoute(builder: (BuildContext context) => const DialogScreen());
+      case routeTabScreen:
+        return MaterialPageRoute(builder: (BuildContext context) => const TabScreen());
       default:
         return MaterialPageRoute(
           builder: (BuildContext context) => Scaffold(

@@ -22,6 +22,20 @@ class _DefaultScreenState extends State<DefaultScreen> {
           const SizedBox(height: 20),
           ListTile(
             tileColor: Colors.blueAccent,
+            title: const Text('Tab Screen'),
+            textColor: Colors.white,
+            contentPadding: const EdgeInsets.symmetric(horizontal: 5),
+            trailing: const Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.white,
+            ),
+            onTap: () {
+              Navigator.pushNamed(context, routeTabScreen);
+            },
+          ),
+          const SizedBox(height: 20),
+          ListTile(
+            tileColor: Colors.blueAccent,
             title: const Text('Dialog Screen'),
             textColor: Colors.white,
             contentPadding: const EdgeInsets.symmetric(horizontal: 5),
