@@ -1,5 +1,5 @@
-import 'package:batch6pm/screen3.dart';
-import 'package:batch6pm/utils/const.dart';
+import 'package:sept24batch7pm/screen3.dart';
+import 'package:sept24batch7pm/utils/const.dart';
 import 'package:flutter/material.dart';
 
 class Screen2 extends StatefulWidget {

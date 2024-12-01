@@ -1,14 +1,14 @@
-import 'package:batch6pm/bottom_nav_screen.dart';
-import 'package:batch6pm/default_screen.dart';
-import 'package:batch6pm/dialog_screen.dart';
-import 'package:batch6pm/image_picker_screen.dart';
-import 'package:batch6pm/image_screen.dart';
-import 'package:batch6pm/login_screen.dart';
-import 'package:batch6pm/register_screen.dart';
-import 'package:batch6pm/screen2.dart';
-import 'package:batch6pm/screen3.dart';
-import 'package:batch6pm/tab_screen.dart';
-import 'package:batch6pm/utils/const.dart';
+import 'package:sept24batch7pm/bottom_nav_screen.dart';
+import 'package:sept24batch7pm/default_screen.dart';
+import 'package:sept24batch7pm/dialog_screen.dart';
+import 'package:sept24batch7pm/image_picker_screen.dart';
+import 'package:sept24batch7pm/image_screen.dart';
+import 'package:sept24batch7pm/login_screen.dart';
+import 'package:sept24batch7pm/register_screen.dart';
+import 'package:sept24batch7pm/screen2.dart';
+import 'package:sept24batch7pm/screen3.dart';
+import 'package:sept24batch7pm/tab_screen.dart';
+import 'package:sept24batch7pm/utils/const.dart';
 import 'package:flutter/material.dart';
 
 class MyAppRoutes {

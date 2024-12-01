@@ -1,9 +1,9 @@
 
-import 'package:batch6pm/default_screen.dart';
-import 'package:batch6pm/list_screen.dart';
-import 'package:batch6pm/login_screen.dart';
-import 'package:batch6pm/register_screen.dart';
-import 'package:batch6pm/utils/colors.dart';
+import 'package:sept24batch7pm/default_screen.dart';
+import 'package:sept24batch7pm/list_screen.dart';
+import 'package:sept24batch7pm/login_screen.dart';
+import 'package:sept24batch7pm/register_screen.dart';
+import 'package:sept24batch7pm/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class AppBottomNavScreen extends StatefulWidget {

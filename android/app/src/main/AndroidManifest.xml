@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.weltec.batch6pm">
+    package="com.weltec.sept24batch7pm">
    <application
-        android:label="batch6pm"
+        android:label="sept24batch7pm"
         android:name="${applicationName}"
         android:requestLegacyExternalStorage="true"
         android:icon="@mipmap/ic_launcher">

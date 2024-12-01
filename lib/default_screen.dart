@@ -1,5 +1,5 @@
-import 'package:batch6pm/utils/colors.dart';
-import 'package:batch6pm/utils/const.dart';
+import 'package:sept24batch7pm/utils/colors.dart';
+import 'package:sept24batch7pm/utils/const.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

@@ -1,4 +1,4 @@
-import 'package:batch6pm/list_screen.dart';
+import 'package:sept24batch7pm/list_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

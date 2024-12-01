@@ -1,6 +1,6 @@
-import 'package:batch6pm/home_screen.dart';
-import 'package:batch6pm/screen2.dart';
-import 'package:batch6pm/utils/const.dart';
+import 'package:sept24batch7pm/home_screen.dart';
+import 'package:sept24batch7pm/screen2.dart';
+import 'package:sept24batch7pm/utils/const.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';

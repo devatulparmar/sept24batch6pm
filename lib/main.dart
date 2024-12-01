@@ -1,6 +1,6 @@
 
-import 'package:batch6pm/login_screen.dart';
-import 'package:batch6pm/utils/routes.dart';
+import 'package:sept24batch7pm/login_screen.dart';
+import 'package:sept24batch7pm/utils/routes.dart';
 import 'package:flutter/material.dart';
 
 void main() {
