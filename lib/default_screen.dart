@@ -1,6 +1,7 @@
 import 'package:batch6pm/utils/colors.dart';
 import 'package:batch6pm/utils/const.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DefaultScreen extends StatefulWidget {
   const DefaultScreen({super.key});
@@ -10,6 +11,28 @@ class DefaultScreen extends StatefulWidget {
 }
 
 class _DefaultScreenState extends State<DefaultScreen> {
+  bool isLogin = false;
+  late SharedPreferences _preferences;
+  List city = [];
+
+  void _initSharedPreferences() async {
+    _preferences = await SharedPreferences.getInstance();
+    isLogin = _preferences.getBool(prefIsLogin) ?? false;
+    debugPrint(_preferences.getString('stringValue'));
+    debugPrint(_preferences.getInt('intValue').toString());
+    debugPrint(_preferences.getDouble('doubleValue').toString());
+    if(_preferences.containsKey('cityNameList')){
+      city = _preferences.getStringList('cityNameList') ?? [];
+    }
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _initSharedPreferences();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,9 +99,45 @@ class _DefaultScreenState extends State<DefaultScreen> {
             },
           ),
           const SizedBox(height: 20),
+          isLogin
+              ? ListTile(
+                  tileColor: Colors.blueAccent,
+                  title: const Text('Logout'),
+                  textColor: Colors.white,
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 5),
+                  trailing: const Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.white,
+                  ),
+                  onTap: () {
+                    _preferences.setBool(prefIsLogin, false);
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, '/', (Route r) => false);
+                  },
+                )
+              : ListTile(
+                  tileColor: Colors.blueAccent,
+                  title: const Text('Login'),
+                  textColor: Colors.white,
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 5),
+                  trailing: const Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.white,
+                  ),
+                  onTap: () {
+                    Navigator.pushNamed(context, routeLoginScreen);
+                  },
+                ),
+          const SizedBox(height: 20),
+          ListView.builder(
+            itemCount: city.length,
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) => Text(city[index]),
+          ),
           ListTile(
             tileColor: Colors.blueAccent,
-            title: const Text('Login'),
+            title: const Text('Clear All Preferences'),
             textColor: Colors.white,
             contentPadding: const EdgeInsets.symmetric(horizontal: 5),
             trailing: const Icon(
@@ -86,10 +145,12 @@ class _DefaultScreenState extends State<DefaultScreen> {
               color: Colors.white,
             ),
             onTap: () {
-              Navigator.pushNamed(context, routeLoginScreen);
+              // _preferences.clear();
+              _preferences.remove('cityNameList');
+              Navigator.pushNamedAndRemoveUntil(
+                  context, '/', (Route r) => false);
             },
           ),
-          const SizedBox(height: 20),
         ],
       ),
     );

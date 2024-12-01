@@ -7,6 +7,7 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -25,6 +26,20 @@ class _LoginScreenState extends State<LoginScreen> {
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   GlobalKey<FormState> formKey2 = GlobalKey<FormState>();
+
+  late SharedPreferences _preferences;
+
+  List<String> cityNameList = ['Vadodara', 'Ahmedabad', 'Surat'];
+
+  void _initSharedPreferences() async {
+    _preferences = await SharedPreferences.getInstance();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _initSharedPreferences();
+  }
 
   @override
   void dispose() {
@@ -126,17 +141,24 @@ class _LoginScreenState extends State<LoginScreen> {
                   Expanded(
                     flex: 1,
                     child: ElevatedButton(
-                      onPressed: () {
+                      onPressed: () async {
                         // Navigator.pushNamed(context, 'screen2');
 
-                        Navigator.pushNamed(
-                          context,
-                          routeScreen2,
-                          arguments: {
-                            "email": emailController.text,
-                            "password": passwordController.text,
-                          },
-                        );
+                        _preferences.setStringList('cityNameList', cityNameList);
+                        _preferences.setBool(prefIsLogin, true);
+                        _preferences.setDouble('doubleValue', 3.14);
+                        _preferences.setInt('intValue', 3);
+                        _preferences.setString('stringValue', 'Hello');
+
+                        Navigator.pushNamedAndRemoveUntil(context, '/', (Route r) => false);
+                        // Navigator.pushNamed(
+                        //   context,
+                        //   routeScreen2,
+                        //   arguments: {
+                        //     "email": emailController.text,
+                        //     "password": passwordController.text,
+                        //   },
+                        // );
 
                         // Navigator.push(
                         //   context,

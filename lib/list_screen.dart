@@ -27,7 +27,7 @@ class _ListScreenState extends State<ListScreen> {
           interactive: true,
           radius: const Radius.circular(5),
           trackVisibility: true,
-          scrollbarOrientation: ScrollbarOrientation.bottom,
+          scrollbarOrientation: ScrollbarOrientation.right,
           child: ListView(
             padding: const EdgeInsets.all(10),
             physics: const AlwaysScrollableScrollPhysics(),
