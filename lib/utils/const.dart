@@ -80,6 +80,7 @@ const String routeRegisterScreen = 'routeRegisterScreen';
 const String routeImagePickerScreen = 'routeImagePickerScreen';
 const String routeDialogScreen = 'routeDialogScreen';
 const String routeTabScreen = 'routeTabScreen';
+const String routeListBuilderScreen = 'routeListBuilderScreen';
 
 const String prefIsLogin = 'isLogin';
 const String prefDoubleValue = 'prefDoubleValue';

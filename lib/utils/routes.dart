@@ -3,6 +3,7 @@ import 'package:sept24batch7pm/default_screen.dart';
 import 'package:sept24batch7pm/dialog_screen.dart';
 import 'package:sept24batch7pm/image_picker_screen.dart';
 import 'package:sept24batch7pm/image_screen.dart';
+import 'package:sept24batch7pm/list_builder_screen.dart';
 import 'package:sept24batch7pm/login_screen.dart';
 import 'package:sept24batch7pm/register_screen.dart';
 import 'package:sept24batch7pm/screen2.dart';
@@ -42,6 +43,8 @@ class MyAppRoutes {
         return MaterialPageRoute(builder: (BuildContext context) => const DialogScreen());
       case routeTabScreen:
         return MaterialPageRoute(builder: (BuildContext context) => const TabScreen());
+      case routeListBuilderScreen:
+        return MaterialPageRoute(builder: (BuildContext context) => const ListBuilderScreen());
       default:
         return MaterialPageRoute(
           builder: (BuildContext context) => Scaffold(

@@ -8,6 +8,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as httpObject;
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -33,6 +34,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _initSharedPreferences() async {
     _preferences = await SharedPreferences.getInstance();
+  }
+
+  Future _loginAPI() async {
+    var urlLink = Uri.parse('https://reqres.in/api/users?page=2');
+    var response = await httpObject.get(urlLink);
+    print(response.body);
   }
 
   @override
@@ -142,15 +149,19 @@ class _LoginScreenState extends State<LoginScreen> {
                     flex: 1,
                     child: ElevatedButton(
                       onPressed: () async {
+                        _loginAPI();
+
                         // Navigator.pushNamed(context, 'screen2');
 
-                        _preferences.setStringList('cityNameList', cityNameList);
+                       /* _preferences.setStringList(
+                            'cityNameList', cityNameList);
                         _preferences.setBool(prefIsLogin, true);
                         _preferences.setDouble('doubleValue', 3.14);
                         _preferences.setInt('intValue', 3);
                         _preferences.setString('stringValue', 'Hello');
 
-                        Navigator.pushNamedAndRemoveUntil(context, '/', (Route r) => false);
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, '/', (Route r) => false);*/
                         // Navigator.pushNamed(
                         //   context,
                         //   routeScreen2,
