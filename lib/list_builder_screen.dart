@@ -1,7 +1,7 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as httpObject;
+import 'package:sept24batch7pm/model/employee_model.dart';
 import 'package:sept24batch7pm/model/user_model.dart';
 
 class ListBuilderScreen extends StatefulWidget {
@@ -14,18 +14,34 @@ class ListBuilderScreen extends StatefulWidget {
 class _ListBuilderScreenState extends State<ListBuilderScreen> {
   List<UserData> userList = [];
   List tempList = [];
-
-
-  UserData _getUserDataFunction(dynamic element){
-    return UserData.fromJson(element);
-  }
+  String token = '';
 
   Future _getUserData() async {
-    var response = await httpObject.get(Uri.parse('https://reqres.in/api/users?page=2'));
+    var url = Uri.parse('https://reqres.in/api/users?page=2');
+
+    var response = await httpObject.get(
+      url,
+      headers: {
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json'
+      },
+    );
+
     if (response.statusCode == 200) {
       var decodedJsonData = jsonDecode(response.body);
+      print(decodedJsonData['total_pages']);
       tempList = decodedJsonData['data'] as List;
-      userList = tempList.map(_getUserDataFunction).toList();
+      ///for method
+      // for(int index = 0; index < tempList.length; index++){
+      //   var item = UserData.fromJson(tempList[index]);
+      //   userList.add(item);
+      // }
+      ///for each method
+      // for(var item in tempList){
+      //   userList.add(item);
+      // }
+      ///map() function
+      userList = tempList.map((item) => UserData.fromJson(item)).toList();
       setState(() {});
     }
   }
@@ -69,6 +85,11 @@ class _ListBuilderScreenState extends State<ListBuilderScreen> {
                   Row(
                     children: [
                       Text("User First Name ${userList[index].firstName}"),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Text("User Last Name: ${tempList[index]['last_name']}"),
                     ],
                   ),
                 ],
