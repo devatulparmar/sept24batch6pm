@@ -153,15 +153,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
                         // Navigator.pushNamed(context, 'screen2');
 
-                       /* _preferences.setStringList(
-                            'cityNameList', cityNameList);
+                        _preferences.setStringList('cityNameList', cityNameList);
                         _preferences.setBool(prefIsLogin, true);
                         _preferences.setDouble('doubleValue', 3.14);
                         _preferences.setInt('intValue', 3);
                         _preferences.setString('stringValue', 'Hello');
 
                         Navigator.pushNamedAndRemoveUntil(
-                            context, '/', (Route r) => false);*/
+                            context, '/', (Route r) => false);
                         // Navigator.pushNamed(
                         //   context,
                         //   routeScreen2,
