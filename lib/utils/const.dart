@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const imgImage2 = "images/image2.jpeg";
+
 const enabledBorder = OutlineInputBorder(
   borderSide: BorderSide(
     color: Colors.grey,
@@ -55,15 +57,15 @@ class MySnackBar {
       SnackBar(
         content: Text(content),
         backgroundColor: backGroundColor ?? Colors.black,
-        duration: const Duration(seconds: 4),
+        duration: const Duration(seconds: 2),
         // showCloseIcon: true,
         // closeIconColor: Colors.red,
-        action: SnackBarAction(
-          onPressed: () {
-            print('Hello');
-          },
-          label: "Click Here",
-        ),
+        // action: SnackBarAction(
+        //   onPressed: () {
+        //     print('Hello');
+        //   },
+        //   label: "Click Here",
+        // ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(35),
         ),
@@ -77,6 +79,8 @@ const String routeScreen2 = 'screen2';
 const String routeScreen3 = 'screen3';
 const String routeLoginScreen = 'LoginScreen';
 const String routeRegisterScreen = 'routeRegisterScreen';
+const String routeRegisterDetailsScreen = 'routeRegisterDetailsScreen';
+const String routeRegisterScreen2 = 'routeRegisterScreen2';
 const String routeImagePickerScreen = 'routeImagePickerScreen';
 const String routeDialogScreen = 'routeDialogScreen';
 const String routeTabScreen = 'routeTabScreen';
