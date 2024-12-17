@@ -85,6 +85,10 @@ const String routeImagePickerScreen = 'routeImagePickerScreen';
 const String routeDialogScreen = 'routeDialogScreen';
 const String routeTabScreen = 'routeTabScreen';
 const String routeListBuilderScreen = 'routeListBuilderScreen';
+const String routeEmployeeListScreen = 'routeEmployeeListScreen';
 
 const String prefIsLogin = 'isLogin';
 const String prefDoubleValue = 'prefDoubleValue';
+
+const int httpOkStatusCode = 200;
+const int httpInternalServerErrorStatusCode = 500;

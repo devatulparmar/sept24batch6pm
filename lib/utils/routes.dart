@@ -1,6 +1,7 @@
 import 'package:sept24batch7pm/bottom_nav_screen.dart';
 import 'package:sept24batch7pm/default_screen.dart';
 import 'package:sept24batch7pm/dialog_screen.dart';
+import 'package:sept24batch7pm/employee_list.dart';
 import 'package:sept24batch7pm/image_picker_screen.dart';
 import 'package:sept24batch7pm/image_screen.dart';
 import 'package:sept24batch7pm/list_builder_screen.dart';
@@ -53,6 +54,9 @@ class MyAppRoutes {
       case routeRegisterScreen2:
         return MaterialPageRoute(
             builder: (BuildContext context) => const RegisterScreen2());
+        case routeEmployeeListScreen:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => const EmployeeListScreen());
       case routeImagePickerScreen:
         return MaterialPageRoute(
             builder: (BuildContext context) => const ImagePickerScreen());

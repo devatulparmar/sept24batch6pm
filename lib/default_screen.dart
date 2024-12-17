@@ -59,6 +59,20 @@ class _DefaultScreenState extends State<DefaultScreen> {
           const SizedBox(height: 20),
           ListTile(
             tileColor: Colors.blueAccent,
+            title: const Text('Employee List'),
+            textColor: Colors.white,
+            contentPadding: const EdgeInsets.symmetric(horizontal: 5),
+            trailing: const Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.white,
+            ),
+            onTap: () {
+              Navigator.pushNamed(context, routeEmployeeListScreen);
+            },
+          ),
+          const SizedBox(height: 20),
+          ListTile(
+            tileColor: Colors.blueAccent,
             title: const Text('List Builder Screen'),
             textColor: Colors.white,
             contentPadding: const EdgeInsets.symmetric(horizontal: 5),

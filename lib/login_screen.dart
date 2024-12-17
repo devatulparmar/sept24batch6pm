@@ -1,11 +1,6 @@
-import 'package:sept24batch7pm/home_screen.dart';
-import 'package:sept24batch7pm/screen2.dart';
+import 'dart:convert';
 import 'package:sept24batch7pm/utils/const.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as httpObject;
@@ -19,6 +14,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool isObscureText = true;
+  bool isLoading = false;
   TextEditingController phoneController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -37,9 +33,40 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future _loginAPI() async {
-    var urlLink = Uri.parse('https://reqres.in/api/users?page=2');
-    var response = await httpObject.get(urlLink);
-    print(response.body);
+    setState(() {
+      isLoading = true;
+    });
+    var urlLink = Uri.parse('https://reqres.in/api/login');
+    var response = await httpObject.post(
+      urlLink,
+      body: {"email": emailController.text, "password": passwordController.text},
+      // body: {"email": "eve.holt@reqres.in", "password": "cityslicka"},
+      // body: {"email": "rachel.howell@reqres.in", "password": "cityslicka"},
+    );
+    if (response.statusCode == httpOkStatusCode) {
+      setState(() {
+        isLoading = false;
+      });
+      var jsonData = jsonDecode(response.body);
+      _preferences.setStringList('cityNameList', cityNameList);
+      _preferences.setBool(prefIsLogin, true);
+      _preferences.setDouble('doubleValue', 3.14);
+      _preferences.setInt('intValue', 3);
+      _preferences.setString('stringValue', 'Hello');
+      _preferences.setString('token', jsonData['token']);
+
+      Navigator.pushNamedAndRemoveUntil(context, '/', (Route r) => false);
+    } else {
+      setState(() {
+        isLoading = false;
+      });
+      var jsonData = jsonDecode(response.body);
+      MySnackBar.showSnackBar(
+        context: context,
+        content: jsonData['error'],
+        backGroundColor: Colors.red,
+      );
+    }
   }
 
   @override
@@ -148,63 +175,32 @@ class _LoginScreenState extends State<LoginScreen> {
                   Expanded(
                     flex: 1,
                     child: ElevatedButton(
-                      onPressed: () async {
-                        _loginAPI();
-
-                        // Navigator.pushNamed(context, 'screen2');
-
-                        _preferences.setStringList('cityNameList', cityNameList);
-                        _preferences.setBool(prefIsLogin, true);
-                        _preferences.setDouble('doubleValue', 3.14);
-                        _preferences.setInt('intValue', 3);
-                        _preferences.setString('stringValue', 'Hello');
-
-                        Navigator.pushNamedAndRemoveUntil(
-                            context, '/', (Route r) => false);
-                        // Navigator.pushNamed(
-                        //   context,
-                        //   routeScreen2,
-                        //   arguments: {
-                        //     "email": emailController.text,
-                        //     "password": passwordController.text,
-                        //   },
-                        // );
-
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (BuildContext context) => Screen2(
-                        //       email: emailController.text,
-                        //       password: passwordController.text,
-                        //     ),
-                        //   ),
-                        // );
-
-                        // print('Elevated button click');
-                        // if (phoneController.text.isEmpty) {
-                        //   MySnackBar.showSnackBar(
-                        //     context: context,
-                        //     content: 'Error',
-                        //     backGroundColor: Colors.red,
-                        //   );
-                        // } else if (formKey.currentState!.validate() ||
-                        //     formKey2.currentState!.validate()) {
-                        //   MySnackBar.showSnackBar(
-                        //     context: context,
-                        //     content: 'Login Success',
-                        //     backGroundColor: Colors.green,
-                        //   );
-                        // }
-                      },
+                      onPressed: isLoading
+                          ? null
+                          : () async {
+                              if(formKey.currentState!.validate()){
+                                _loginAPI();
+                              }
+                            },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.red,
                       ),
-                      child: const Text(
-                        'Login',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
+                      child: isLoading
+                          ? const SizedBox(
+                              height: 20,
+                              width: 20,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 3,
+                                color: Colors.red,
+                                backgroundColor: Colors.white,
+                              ),
+                            )
+                          : const Text(
+                              'Login',
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
                     ),
                   ),
                 ],

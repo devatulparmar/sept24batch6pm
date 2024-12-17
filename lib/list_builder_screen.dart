@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as httpObject;
-import 'package:sept24batch7pm/model/employee_model.dart';
 import 'package:sept24batch7pm/model/user_model.dart';
 
 class ListBuilderScreen extends StatefulWidget {
@@ -56,7 +55,7 @@ class _ListBuilderScreenState extends State<ListBuilderScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('List Screen'),
+        title: const Text('List Builder Screen'),
       ),
       body: ListView.builder(
         padding: const EdgeInsets.all(10),
