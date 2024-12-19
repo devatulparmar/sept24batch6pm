@@ -1,9 +1,10 @@
 import 'dart:convert';
+import 'package:sept24batch7pm/repository/api_repository.dart';
 import 'package:sept24batch7pm/utils/const.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:sept24batch7pm/utils/url_links.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:http/http.dart' as httpObject;
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -36,13 +37,22 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       isLoading = true;
     });
-    var urlLink = Uri.parse('https://reqres.in/api/login');
-    var response = await httpObject.post(
-      urlLink,
-      body: {"email": emailController.text, "password": passwordController.text},
-      // body: {"email": "eve.holt@reqres.in", "password": "cityslicka"},
-      // body: {"email": "rachel.howell@reqres.in", "password": "cityslicka"},
+    // var urlLink = Uri.parse('https://reqres.in/api/login');
+    // var response = await httpObject.post(
+    //   urlLink,
+    //   body: {
+    //     "email": emailController.text,
+    //     "password": passwordController.text
+    //   },
+    //   // body: {"email": "eve.holt@reqres.in", "password": "cityslicka"},
+    //   // body: {"email": "rachel.howell@reqres.in", "password": "cityslicka"},
+    // );
+
+    var response = await ApiRepository().postAPICall(
+      bodyData: {"email": emailController.text, "password": passwordController.text},
+      url: urlLogin,
     );
+
     if (response.statusCode == httpOkStatusCode) {
       setState(() {
         isLoading = false;
@@ -178,7 +188,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: isLoading
                           ? null
                           : () async {
-                              if(formKey.currentState!.validate()){
+                              if (formKey.currentState!.validate()) {
                                 _loginAPI();
                               }
                             },

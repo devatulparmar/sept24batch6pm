@@ -1,8 +1,7 @@
 import 'dart:convert';
-
-import 'package:http/http.dart' as httpObject;
 import 'package:flutter/material.dart';
 import 'package:sept24batch7pm/model/EmployeeModel.dart';
+import 'package:sept24batch7pm/repository/api_repository.dart';
 import 'package:sept24batch7pm/utils/const.dart';
 
 class EmployeeListScreen extends StatefulWidget {
@@ -17,8 +16,9 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
   List tempList = [];
 
   void _getEmployeeList() async {
-    var url = Uri.parse("https://reqres.in/api/users?page=2");
-    var response = await httpObject.post(url, headers: {});
+    // var url = Uri.parse("https://reqres.in/api/users?page=2");
+    // Response response = await httpObject.post(url, headers: {});
+    var response = await ApiRepository().getAPICall("https://reqres.in/api/users?page=2");
 
     if (response.statusCode == httpOkStatusCode) {
       var jsonData = jsonDecode(response.body);
