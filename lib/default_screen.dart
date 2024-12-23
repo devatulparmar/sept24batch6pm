@@ -2,6 +2,7 @@ import 'package:sept24batch7pm/utils/colors.dart';
 import 'package:sept24batch7pm/utils/const.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DefaultScreen extends StatefulWidget {
   const DefaultScreen({super.key});
@@ -21,10 +22,23 @@ class _DefaultScreenState extends State<DefaultScreen> {
     debugPrint(_preferences.getString('stringValue'));
     debugPrint(_preferences.getInt('intValue').toString());
     debugPrint(_preferences.getDouble('doubleValue').toString());
-    if(_preferences.containsKey('cityNameList')){
+    if (_preferences.containsKey('cityNameList')) {
       city = _preferences.getStringList('cityNameList') ?? [];
     }
     setState(() {});
+  }
+
+  Future _openUrlFromLink() async {
+    final Uri urlLink = Uri.parse("https://flutter.dev");
+    if (await canLaunchUrl(urlLink) == true) {
+      launchUrl(urlLink);
+    } else {
+      MySnackBar.showSnackBar(
+          context: context,
+          backGroundColor: Colors.red,
+          content: 'Could not launch $urlLink',
+      );
+    }
   }
 
   @override
@@ -42,6 +56,20 @@ class _DefaultScreenState extends State<DefaultScreen> {
       body: ListView(
         padding: const EdgeInsets.all(10),
         children: [
+          const SizedBox(height: 20),
+          ListTile(
+            tileColor: Colors.blueAccent,
+            title: const Text('Privacy Policy'),
+            textColor: Colors.white,
+            contentPadding: const EdgeInsets.symmetric(horizontal: 5),
+            trailing: const Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.white,
+            ),
+            onTap: () {
+              _openUrlFromLink();
+            },
+          ),
           const SizedBox(height: 20),
           ListTile(
             tileColor: Colors.blueAccent,
