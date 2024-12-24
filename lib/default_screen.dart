@@ -34,11 +34,53 @@ class _DefaultScreenState extends State<DefaultScreen> {
       launchUrl(urlLink);
     } else {
       MySnackBar.showSnackBar(
-          context: context,
-          backGroundColor: Colors.red,
-          content: 'Could not launch $urlLink',
+        context: context,
+        backGroundColor: Colors.red,
+        content: 'Could not launch $urlLink',
       );
     }
+  }
+
+  String? _encodeQueryParameters(Map<String, String> params) {
+    return params.entries
+        .map((MapEntry<String, String> e) =>
+            '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+        .join('&');
+  }
+
+  Future _openEmail() async {
+    final Uri emailLaunchUri = Uri(
+      scheme: 'mailto',
+      path: 'info@mayursoftware.in',
+      query: _encodeQueryParameters(
+        {
+          'subject': 'Example Subject & Symbols are allowed!',
+          'body': 'Hello, Good Afternoon!.'
+        },
+      ),
+    );
+
+    launchUrl(emailLaunchUri);
+  }
+
+  Future _openPhone() async {
+    Uri uriPhone = Uri(
+      scheme: 'tel',
+      path: '+911234567890'
+    );
+
+    launchUrl(uriPhone);
+  }
+
+  Future _openSMS() async {
+    Uri uriSMS = Uri(
+      scheme: 'sms',
+      path: '+911234567890',
+      queryParameters: {
+        'body' : "Hello"
+      }
+    );
+    launchUrl(uriSMS);
   }
 
   @override
@@ -56,6 +98,42 @@ class _DefaultScreenState extends State<DefaultScreen> {
       body: ListView(
         padding: const EdgeInsets.all(10),
         children: [
+          const SizedBox(height: 20),
+          ListTile(
+            tileColor: Colors.blueAccent,
+            title: const Text('Contact us on SMS'),
+            textColor: Colors.white,
+            contentPadding: const EdgeInsets.symmetric(horizontal: 5),
+            trailing: const Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.white,
+            ),
+            onTap: _openSMS,
+          ),
+          const SizedBox(height: 20),
+          ListTile(
+            tileColor: Colors.blueAccent,
+            title: const Text('Contact us on Phone'),
+            textColor: Colors.white,
+            contentPadding: const EdgeInsets.symmetric(horizontal: 5),
+            trailing: const Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.white,
+            ),
+            onTap: _openPhone,
+          ),
+          const SizedBox(height: 20),
+          ListTile(
+            tileColor: Colors.blueAccent,
+            title: const Text('Contact us on Email'),
+            textColor: Colors.white,
+            contentPadding: const EdgeInsets.symmetric(horizontal: 5),
+            trailing: const Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.white,
+            ),
+            onTap: _openEmail,
+          ),
           const SizedBox(height: 20),
           ListTile(
             tileColor: Colors.blueAccent,
